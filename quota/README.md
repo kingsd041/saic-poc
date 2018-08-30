@@ -25,6 +25,8 @@ Name:            compute-resources
 Namespace:       test-namespace
 Resource         Used   Hard
 --------         ----   ----
+limits.cpu       500m   1
+limits.memory    128Mi  1Gi
 requests.cpu     500m   1
 requests.memory  128Mi  1Gi
 ```
@@ -41,6 +43,8 @@ Name:            compute-resources
 Namespace:       test-namespace
 Resource         Used  Hard
 --------         ----  ----
+limits.cpu       0     1
+limits.memory    0     1Gi
 requests.cpu     0     1
 requests.memory  0     1Gi
 ```
