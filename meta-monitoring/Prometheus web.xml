@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>3.4</version>
+    <date>2018-09-05T14:23:32Z</date>
+    <groups>
+        <group>
+            <name>Virtual machines</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Prometheus web</template>
+            <name>Prometheus web</name>
+            <description/>
+            <groups>
+                <group>
+                    <name>Virtual machines</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>prometheus web</name>
+                </application>
+            </applications>
+            <items/>
+            <discovery_rules/>
+            <httptests>
+                <httptest>
+                    <name>prometheus metrics</name>
+                    <application>
+                        <name>prometheus web</name>
+                    </application>
+                    <delay>1m</delay>
+                    <attempts>1</attempts>
+                    <agent>Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)</agent>
+                    <http_proxy/>
+                    <variables/>
+                    <headers/>
+                    <status>0</status>
+                    <authentication>0</authentication>
+                    <http_user/>
+                    <http_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <steps>
+                        <step>
+                            <name>prometheus_metric</name>
+                            <url>http://34.245.229.243:30334/metrics</url>
+                            <query_fields/>
+                            <posts/>
+                            <variables/>
+                            <headers/>
+                            <follow_redirects>1</follow_redirects>
+                            <retrieve_mode>0</retrieve_mode>
+                            <timeout>15s</timeout>
+                            <required/>
+                            <status_codes>200</status_codes>
+                        </step>
+                    </steps>
+                </httptest>
+            </httptests>
+            <macros/>
+            <templates/>
+            <screens/>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>{Prometheus web:web.test.rspcode[prometheus metrics,prometheus_metric].last()}&lt;&gt;200</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Prometheus returns status code error</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+    </triggers>
+</zabbix_export>
